@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+
+/*
+ * Ascend's visual identity (spec §41): dark, focused, technical, disciplined,
+ * information-dense but not cluttered. No gamification, no badges, no
+ * decorative animation.
+ *
+ * Surfaces and status colors are taken from the validated data-viz palette and
+ * were re-checked against this app's own dark surface (#12141a): the eight
+ * categorical hues clear every adjacent CVD/normal-vision gate, and all four
+ * status colors clear 3:1 against the surface. Status colors are reserved —
+ * they always ship beside a label or a number, never carrying meaning alone.
+ */
+@theme {
+  --color-plane: #0a0b0e;
+  --color-panel: #12141a;
+  --color-raised: #191c23;
+  --color-hairline: #22262f;
+  --color-hairline-strong: #2f3440;
+
+  --color-ink: #ffffff;
+  --color-ink-2: #b6bcc8;
+  --color-ink-3: #8b93a1;
+  --color-ink-4: #626977;
+
+  /* Actionable / informational. */
+  --color-accent: #3987e5;
+
+  /* Reserved status roles — never reused as a series color. */
+  --color-good: #0ca30c;
+  --color-warning: #fab219;
+  --color-serious: #ec835a;
+  --color-critical: #d03b3b;
+
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-plane);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbars that do not fight the dark surface. */
+* {
+  scrollbar-color: var(--color-hairline-strong) transparent;
+  scrollbar-width: thin;
+}
+
+@layer components {
+  /* A panel is the unit of the dashboard: hairline ring, no shadow, no gloss. */
+  .panel {
+    background: var(--color-panel);
+    border: 1px solid var(--color-hairline);
+    border-radius: 0.5rem;
+  }
+
+  /*
+   * Section labels. Uppercase and letter-spaced to carry hierarchy without
+   * needing size, which keeps the screen dense (§41).
+   */
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+
+  .hairline {
+    border-color: var(--color-hairline);
+  }
+
+  /* Inputs: flat, dark, no rounded-pill styling. */
+  .field {
+    width: 100%;
+    background: var(--color-plane);
+    border: 1px solid var(--color-hairline-strong);
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.625rem;
+    color: var(--color-ink);
+    font-size: 0.875rem;
+  }
+
+  .field:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -1px;
+  }
+
+  .field::placeholder {
+    color: var(--color-ink-4);
+  }
+
+  /*
+   * Tabular figures only where digits must line up in columns; large standalone
+   * numbers use proportional figures so they do not look loose.
+   */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}

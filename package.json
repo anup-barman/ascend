@@ -1,0 +1,27 @@
+{
+  "name": "ascend",
+  "private": true,
+  "version": "0.1.0",
+  "description": "ASCEND \u2014 ICPC Regional Preparation System",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.24.0",
+  "scripts": {
+    "dev": "concurrently -n server,web -c cyan,magenta \"pnpm --filter @ascend/server dev\" \"pnpm --filter @ascend/web dev\"",
+    "build": "pnpm --filter @ascend/web build",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "sync:smoke": "pnpm --filter @ascend/server smoke",
+    "db:generate": "pnpm --filter @ascend/db generate",
+    "db:migrate": "pnpm --filter @ascend/db migrate"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "concurrently": "^10.0.5",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.11"
+  }
+}

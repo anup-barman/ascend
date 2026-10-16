@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "paths": {
+      "@ascend/core": ["./packages/core/src/index.ts"],
+      "@ascend/core/*": ["./packages/core/src/*"],
+      "@ascend/db": ["./packages/db/src/index.ts"],
+      "@ascend/db/*": ["./packages/db/src/*"],
+      "@ascend/providers": ["./packages/providers/src/index.ts"],
+      "@ascend/providers/*": ["./packages/providers/src/*"],
+      "@ascend/llm": ["./packages/llm/src/index.ts"],
+      "@ascend/llm/*": ["./packages/llm/src/*"]
+    }
+  }
+}
